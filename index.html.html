@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I'm Sorry, Lov</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #f0ece8;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .page {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
+      width: 100%;
+    }
+
+    .page.active {
+      display: flex;
+    }
+
+    img.sticker {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1.5px solid #c8c0b8;
+      background: #fff;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: 1rem;
+      color: #8a7060;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .sub {
+      font-size: 0.82rem;
+      color: #a89888;
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      margin-bottom: 2rem;
+      letter-spacing: 0.03em;
+    }
+
+    .body-text {
+      font-size: 0.85rem;
+      color: #7a6a5a;
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      line-height: 1.8;
+      max-width: 320px;
+      margin-bottom: 1.8rem;
+      text-align: center;
+    }
+
+    .btn {
+      display: block;
+      width: 190px;
+      max-width: 100%;
+      background: #9a8878;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      font-family: 'Georgia', serif;
+      cursor: pointer;
+      margin: 0.5rem auto;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: #7a6a5a;
+    }
+
+    .btn-outline {
+      background: #9a8878;
+      color: #fff;
+    }
+
+    .btn-outline:hover {
+      background: #b0a898;
+    }
+
+    #no-btn {
+      position: static;
+    }
+
+    .btn-wrap {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      width: 220px;
+      min-height: 94px;
+      margin: 0 auto;
+    }
+
+    .btn-wrap .btn {
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- PAGE 1: Main sorry page -->
+  <div class="page active" id="p1">
+    <img class="sticker" src="assets/gifs/1.gif" alt="sorry bunny">
+    <h1>I'M SORRY</h1>
+    <p class="sub">Please read this with your heart, not just your eyes.</p>
+    <div class="btn-wrap">
+      <button class="btn" onclick="go('p3')">Read my message</button>
+      <button class="btn btn-outline" id="no-btn" onmouseenter="flee(this)" ontouchstart="flee(this)">Why would
+        I?</button>
+    </div>
+  </div>
+  <!-- PAGE 3: The letter -->
+  <div class="page" id="p3">
+    <img class="sticker" src="assets/gifs/2.gif" alt="sorry bunny">
+    <p class="body-text">
+      Hey, I know "sorry" won't fix what happened, but I sincerely apologize. I promised that I would wake you up, but I
+      ended up falling asleep myself. I know I let you down, and I take full responsibility for it. I understand if
+      you're disappointed because I failed to keep my word.<br><br>
+
+      I'm truly sorry, and I'll make sure to be more responsible and do better next time. I hope you can forgive me. :(
+
+    </p>
+    <div class="btn-wrap">
+      <button class="btn" onclick="go('p4a')">Okayyy, I forgive you.</button>
+      <button class="btn btn-outline" onclick="go('p4')">Not gonna happen</button>
+    </div>
+  </div>
+
+  <!-- PAGE 4A: Ask to send sticker -->
+  <div class="page" id="p4a">
+    <img class="sticker" src="assets/gifs/4.gif" alt="sorry bunny">  
+    <p class="body-text">
+      If you forgive me, could you send me one of your cutie pics? I'd take that as a sign that we're okay mwhehehehe
+    </p>
+    <div class="btn-wrap">
+      <button class="btn" onclick="go('p5')">Alright, I'll send it</button>
+      <button class="btn btn-outline" id="why-btn" onclick="go('p1')" onmouseenter="flee(this)"
+        ontouchstart="flee(this)">Maybe next time</button>
+    </div>
+  </div>
+
+  <!-- PAGE 4: Please page -->
+  <div class="page" id="p4">
+    <img class="sticker" src="assets/gifs/3.gif" alt="sorry bunny">
+    <p class="body-text">
+      Pleaseeeee :(
+    </p>
+    <div class="btn-wrap">
+      <button class="btn" onclick="go('p4a')">Okayyyy</button>
+      <button class="btn btn-outline")>I won't</button>
+    </div>
+  </div>
+
+  <!-- PAGE 5: Playing hard -->
+  <div class="page" id="p5">
+    <img class="sticker" src="assets/gifs/5.gif" alt="sorry bunny">
+    <p class="sub" style="margin-bottom:0.6rem;">Wait, I'm actually getting it?</p>
+    <p class="body-text">YAYYYYY, HAHAHAHHAHAHHA </p>
+    <button class="btn"
+      onclick="window.open('https://www.facebook.com/share/1P5zTMpaeZ/?mibextid=wwXIfr', '_blank', 'noopener,noreferrer')">Send
+      Now</button>
+  </div>
+
+  <script>
+    function go(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      resetNoBtn();
+    }
+    function resetNoBtn() {
+      ['no-btn', 'why-btn'].forEach(function (id) {
+        var b = document.getElementById(id);
+        if (b) { b.style.position = 'static'; b.style.left = ''; b.style.top = ''; b.style.right = ''; b.style.bottom = ''; b.style.zIndex = ''; }
+      });
+    }
+    function flee(btn) {
+      btn.style.position = 'fixed';
+      var w = window.innerWidth - btn.offsetWidth - 16;
+      var h = window.innerHeight - btn.offsetHeight - 16;
+      btn.style.left = Math.max(8, Math.random() * w) + 'px';
+      btn.style.top = Math.max(8, Math.random() * h) + 'px';
+      btn.style.zIndex = '9999';
+    }
+  </script>
+</body>
+
+</html>
